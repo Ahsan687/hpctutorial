@@ -1,12 +1,16 @@
 import numpy as np
 import multiprocessing as mp
 from time import time
+import sys
 
-N_Proc = 4
-N_evals = 20
+if(len(sys.argv)==3):
+    N_Proc = int(sys.argv[1])
+    N_evals = int(sys.argv[2])
+else: 
+    N_Proc = int(input("Specify number of cores (e.g., 4): "))
+    N_evals = int(input("Specify number of evaluations (e.g., 100): "))
+
 Multiplier = 2
-
-# will modify soon to allow command-line arguments
 
 output = []
 
@@ -19,15 +23,15 @@ def do_this_job(n,mult):
 
 start_time = time()
 pool = mp.Pool(processes=N_Proc)
-#
 print('pool pooled')
+
 results = [pool.apply_async(do_this_job,args=(n,Multiplier)) for n in range(N_evals)]
 print('results setup')
-#
+
 for n in range(N_evals):
     output.append(results[n].get())
-#
 print('results got')
+
 pool.close()
 pool.join()
 print('pool closed')
