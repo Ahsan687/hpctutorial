@@ -1,0 +1,8 @@
+#!/bin/sh
+#PBS -l walltime=00:30:00
+#PBS -N hello_MPI
+#PBS -o hello_MPI.out
+#PBS -j oe
+date
+mpirun -np 4 ./hello_MPI
+date
