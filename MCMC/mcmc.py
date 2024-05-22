@@ -15,6 +15,7 @@ Base_Dir = '/home/aseem/iucaa/Workshops-Seminars/HPC-Srinagar-May2024/share/hpct
 Like_Dir = Base_Dir + 'likes/'
 Data_Dir = Base_Dir + 'data/'
 Plots_Dir = Base_Dir + 'plots/'
+Stats_Dir = Base_Dir + 'stats/'
 
 # load data
 data_file = Data_Dir + 'data.txt'
@@ -75,7 +76,7 @@ info['sampler'] = {'mcmc':
                     'burn_in': 0}}
 
 # -- output location
-info['output'] = 'stats/chains/' + id_str
+info['output'] = Stats_Dir + 'chains/' + id_str
 
 # -- resume stopped job or start new job and overwrite
 if Resume:
