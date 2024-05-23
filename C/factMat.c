@@ -24,11 +24,10 @@ int main (int argc, char **argv) {
 
    // Allocate memory for the matrix
    double **M = malloc (N * sizeof *M);
-   M[0] = malloc (N * N * sizeof **M);
 
    int row, col;
-   for (row=1; row<N; row++)
-      M[row] = M[0] + row;
+   for (row=0; row<N; row++)
+      M[row] = malloc (N * sizeof **M);
 
    // Compute the matrix
 #pragma omp parallel for private(col)
