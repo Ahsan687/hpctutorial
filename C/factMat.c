@@ -28,7 +28,7 @@ int main (int argc, char **argv) {
 
    int row, col;
    for (row=1; row<N; row++)
-      M[row] = M[0] + (sizeof **M)*row;
+      M[row] = M[0] + row;
 
    // Compute the matrix
 #pragma omp parallel for private(col)
